@@ -5,13 +5,9 @@ from constants import *
 def main():
     """main function is our main function"""
 
-    print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
-
-    pf = pygame.init()
-    if pf[1] > 0:
-        print("failed pygame.init()")
+    pygame.init()
+    fps = pygame.time.Clock()
+    dt = 0
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -24,6 +20,10 @@ def main():
 
         screen.fill(color=pygame.Color(0, 0, 0))
         pygame.display.flip()
+
+        # sets framerate
+        t = fps.tick(60)
+        dt = t / 1000
 
 
 # ensures main() is only called when this file is run directly
