@@ -7,10 +7,15 @@ def main():
     """main function is our main function"""
 
     pygame.init()
-    fps = pygame.time.Clock()
-    dt = 0
-
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    fps = pygame.time.Clock()
+
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
+    dt = 0
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -21,9 +26,14 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
+        for obj in updatable:
+            obj.update(dt)
+
         screen.fill(color=pygame.Color(0, 0, 0))
-        player.draw(screen)
-        player.update(dt)
+
+        for obj in drawable:
+            obj.draw(screen)
+
         pygame.display.flip()
 
         # sets FPS to 60
