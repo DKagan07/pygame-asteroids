@@ -47,7 +47,7 @@ def main():
             for bullet in shots:
                 if ast.check_for_collisions(bullet):
                     bullet.kill()
-                    ast.kill()
+                    ast.split()
 
         screen.fill(color=pygame.Color(0, 0, 0))
 
