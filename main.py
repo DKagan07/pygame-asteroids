@@ -23,6 +23,7 @@ def main():
 
         screen.fill(color=pygame.Color(0, 0, 0))
         player.draw(screen)
+        player.update(dt)
         pygame.display.flip()
 
         # sets FPS to 60
